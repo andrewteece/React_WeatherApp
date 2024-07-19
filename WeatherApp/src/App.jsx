@@ -1,11 +1,8 @@
+import Weather from './components/Weather';
 import './App.css';
 
 function App() {
-  return (
-    <>
-      <h2>Weather</h2>
-    </>
-  );
+  return <Weather />;
 }
 
 export default App;
