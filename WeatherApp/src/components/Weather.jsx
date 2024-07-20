@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
+
 //import Autocomplete from 'react-google-autocomplete';
 import styles from './Weather.module.css';
+import { WEATHER_COORDS_URL } from '../constants';
+import WeatherCard from './WeatherCard';
+
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState({});
