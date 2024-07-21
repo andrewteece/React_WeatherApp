@@ -71,7 +71,25 @@ const Weather = () => {
 
   return (
     <div>
-      <h3>Current Weather</h3>
+      {errorMessage && (
+        <div className="{styles.error}">
+          <span>{errorMessage}</span>
+        </div>
+      )}
+      <AutoComplete
+        className={styles.autocomplete}
+        apiKey={GOOGLE_API_KEY}
+        onPlaceSelected={onPlaceSelected}
+      />
+
+      {weatherData && weatherData.main && (
+        <div className="{styles.container}">
+          {loading && <div className={styles.loading}>Loading...</div>}
+          {weatherData && weatherData.main && (
+            <WeatherCard data={weatherData} />
+          )}
+        </div>
+      )}
     </div>
   );
 };
