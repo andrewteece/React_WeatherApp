@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Weather.module.css';
 import { WEATHER_COORDS_URL, WEATHER_IMAGES_URL } from '../constants';
+import WeatherCard from './WeatherCard';
 
 const getFormattedDate = () => {
   const currentDate = new Date();
@@ -108,6 +109,9 @@ const Weather = () => {
               Pressure <br /> {weatherData.main.pressure} mb
             </div>
           </div>
+          {weatherData && weatherData.main && (
+            <WeatherCard data={weatherData} />
+          )}
         </div>
       )}
     </div>
