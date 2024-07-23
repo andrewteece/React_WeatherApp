@@ -1,9 +1,14 @@
-const WeatherCard = () => {
-  <div>
-    {weatherData && weatherData.main && (
+import { WEATHER_IMAGES_URL } from '../constants';
+import { getFormattedDate } from '../utils';
+import styles from './WeatherCard.module.css';
+
+const WeatherCard = ({ data }) => {
+  const { sys, main, weather, name, wind } = data;
+  return (
+    <div>
       <div className={styles.container}>
         <h2>
-          {weatherData.name}, <span>{weatherData.sys.country}</span>
+          {name}, <span>{sys.country}</span>
         </h2>
         <h3>
           <span>{getFormattedDate()}</span>
@@ -12,19 +17,19 @@ const WeatherCard = () => {
         <div className={styles.row}>
           <img
             className={styles.image}
-            src={`${WEATHER_IMAGES_URL}/${weatherData.weather[0].icon}@2x.png`}
-            alt={weatherData.weather[0].description}
+            src={`${WEATHER_IMAGES_URL}/${weather[0].icon}@2x.png`}
+            alt={weather[0].description}
           />
           <span className={styles.temperature}>
-            {Math.round(weatherData.main.temp)}
+            {Math.round(main.temp)}
             <sup>&deg;c</sup>
           </span>
 
           <div className={styles.description}>
-            <span>{weatherData.weather[0].main}</span>
+            <span>{weather[0].main}</span>
             <br />
             <span>
-              Feels like {Math.round(weatherData.main.feels_like)}
+              Feels like {Math.round(main.feels_like)}
               <sup>&deg;</sup>
             </span>
           </div>
@@ -32,18 +37,18 @@ const WeatherCard = () => {
 
         <div className={styles.row}>
           <div>
-            Wind <br /> {Math.round(weatherData.wind.speed)} m/s
+            Wind <br /> {Math.round(wind.speed)} m/s
           </div>
           <div>
-            Humidity <br /> {weatherData.main.humidity}%
+            Humidity <br /> {main.humidity}%
           </div>
           <div>
-            Pressure <br /> {weatherData.main.pressure} mb
+            Pressure <br /> {main.pressure} mb
           </div>
         </div>
       </div>
-    )}
-  </div>;
+    </div>
+  );
 };
 
 export default WeatherCard;
