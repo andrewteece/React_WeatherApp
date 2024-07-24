@@ -4,7 +4,7 @@ import styles from './Weather.module.css';
 import { WEATHER_COORDS_URL } from '../constants';
 import WeatherCard from './WeatherCard';
 
-//const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState({});
@@ -74,7 +74,7 @@ const Weather = () => {
       )}
       <Autocomplete
         className={styles.autocomplete}
-        apiKey={'AIzaSyCV0p0J9G27abVkzhnDY8FLl7EPy9UYNaQ'}
+        apiKey={GOOGLE_API_KEY}
         onPlaceSelected={onPlaceSelected}
       />
       {loading && <div className={styles.loading}>Loading...</div>}
